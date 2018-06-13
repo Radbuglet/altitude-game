@@ -1,3 +1,3 @@
 Working Name = Altitude
 Author = radbuglet
-Engine = Godot
+Engine = Godot (https://godotengine.org/)
