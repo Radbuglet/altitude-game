@@ -1,0 +1,450 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://scripts/PlayerController.gd" type="Script" id=1]
+[ext_resource path="res://scenes/MainMenu.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/CameraLook.gd" type="Script" id=3]
+[ext_resource path="res://scripts/PauseGUIController.gd" type="Script" id=4]
+[ext_resource path="res://fonts/logo.tres" type="DynamicFont" id=5]
+[ext_resource path="res://scripts/ResumeScriptHandler.gd" type="Script" id=6]
+[ext_resource path="res://scripts/ReturnToMenuHandler.gd" type="Script" id=7]
+[ext_resource path="res://scripts/AltitudeGUIController.gd" type="Script" id=8]
+[ext_resource path="res://scripts/ElevationDisplayComponent.gd" type="Script" id=9]
+[ext_resource path="res://textures/actual_elevation_remade.png" type="Texture" id=10]
+[ext_resource path="res://textures/acclimated_elevation_remade.png" type="Texture" id=11]
+[ext_resource path="res://textures/lower_elevation_zone.png" type="Texture" id=12]
+[ext_resource path="res://scripts/elevation_modes/Speed_1.gd" type="Script" id=13]
+[ext_resource path="res://scripts/elevation_modes/Speed_1_LowVelAVG.gd" type="Script" id=14]
+[ext_resource path="res://scripts/elevation_modes/JumpBoost_1.gd" type="Script" id=15]
+[ext_resource path="res://scripts/elevation_modes/Normal.gd" type="Script" id=16]
+
+[sub_resource type="BoxShape" id=1]
+
+extents = Vector3( 1, 1, 1 )
+
+[sub_resource type="PackedScene" id=2]
+
+_bundled = {
+"conn_count": 0,
+"conns": PoolIntArray(  ),
+"editable_instances": [  ],
+"names": PoolStringArray( "ClimatePart", "ColorRect", "anchor_left", "anchor_top", "anchor_right", "anchor_bottom", "margin_right", "margin_bottom", "rect_pivot_offset", "rect_clip_content", "mouse_filter", "mouse_default_cursor_shape", "size_flags_horizontal", "size_flags_vertical", "color", "script", "_sections_unfolded" ),
+"node_count": 1,
+"node_paths": [  ],
+"nodes": PoolIntArray( -1, -1, 1, 0, -1, 15, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 9, 7, 10, 8, 11, 9, 12, 10, 13, 11, 14, 12, 15, 13, 16, 14, 0 ),
+"variants": [ 0.0, 0.0, 0.0, 0.0, 5.0, 40.0, Vector2( 0, 0 ), false, 0, 0, 1, 1, Color( 1, 1, 1, 1 ), ExtResource( 9 ), [ "Rect" ] ],
+"version": 2
+}
+
+[node name="Player" type="KinematicBody" index="0"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+axis_lock_linear_x = false
+axis_lock_linear_y = false
+axis_lock_linear_z = false
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+collision/safe_margin = 0.001
+script = ExtResource( 1 )
+_sections_unfolded = [ "Angular", "Axis Lock" ]
+__meta__ = {
+"_edit_vertical_guides_": [  ]
+}
+current_level_id = null
+win_scene = ExtResource( 2 )
+min_y = -10
+max_y = 20
+climates = null
+
+[node name="Camera" type="Camera" parent="." index="0"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.444057, 0 )
+keep_aspect = 1
+cull_mask = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+doppler_tracking = 0
+projection = 0
+current = true
+fov = 70.0
+size = 1.0
+near = 0.05
+far = 1000.0
+script = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape" type="CollisionShape" parent="." index="1"]
+
+transform = Transform( 0.25, 0, 0, 0, 0.5, 0, 0, 0, 0.25, 0, 0, 0 )
+shape = SubResource( 1 )
+disabled = false
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape" index="0"]
+
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = null
+skeleton = NodePath("..")
+
+[node name="PauseMenu" type="CanvasLayer" parent="." index="2"]
+
+pause_mode = 2
+layer = 5
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+_sections_unfolded = [ "Pause" ]
+
+[node name="PauseMenuRoot" type="Control" parent="PauseMenu" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 4 )
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu/PauseMenuRoot" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0.125, 0.125, 0.125, 0.524863 )
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenu/PauseMenuRoot" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 40.0
+margin_top = 40.0
+margin_right = -40.0
+margin_bottom = -40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Margin", "Visibility" ]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PauseMenu/PauseMenuRoot/MarginContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 8.0
+margin_right = 944.0
+margin_bottom = 520.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/PauseMenuRoot/MarginContainer/HBoxContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 820.0
+margin_bottom = 520.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+alignment = 0
+
+[node name="Logo" type="Label" parent="PauseMenu/PauseMenuRoot/MarginContainer/HBoxContainer/VBoxContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 820.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.0732422, 0.9375, 0.83622, 1 )
+text = "Altitude"
+valign = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PauseMenu/PauseMenuRoot/MarginContainer/HBoxContainer" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 824.0
+margin_right = 936.0
+margin_bottom = 520.0
+rect_min_size = Vector2( 100, 0 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+_sections_unfolded = [ "Margin", "Rect", "Size Flags", "Theme" ]
+
+[node name="Label2" type="Label" parent="PauseMenu/PauseMenuRoot/MarginContainer/HBoxContainer/VBoxContainer2" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 112.0
+margin_bottom = 14.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_colors/font_color = Color( 1, 0.308594, 0.308594, 1 )
+text = "=== Menu ==="
+align = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors" ]
+
+[node name="Resume" type="Button" parent="PauseMenu/PauseMenuRoot/MarginContainer/HBoxContainer/VBoxContainer2" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 18.0
+margin_right = 112.0
+margin_bottom = 38.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Resume"
+flat = true
+align = 2
+script = ExtResource( 6 )
+
+[node name="Quit" type="Button" parent="PauseMenu/PauseMenuRoot/MarginContainer/HBoxContainer/VBoxContainer2" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 42.0
+margin_right = 112.0
+margin_bottom = 62.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Return to menu"
+flat = true
+align = 2
+script = ExtResource( 7 )
+main_scene = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="PauseMenu/PauseMenuRoot/MarginContainer/HBoxContainer/VBoxContainer2" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 66.0
+margin_right = 112.0
+margin_bottom = 97.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_colors/font_color = Color( 1, 0.308594, 0.308594, 1 )
+text = "
+=== Cheats ==="
+align = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors" ]
+
+[node name="AirJumpChb" type="CheckBox" parent="PauseMenu/PauseMenuRoot/MarginContainer/HBoxContainer/VBoxContainer2" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 101.0
+margin_right = 112.0
+margin_bottom = 125.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Air Jumping"
+flat = false
+align = 2
+
+[node name="AltitudeGUI" type="CanvasLayer" parent="." index="3"]
+
+editor/display_folded = true
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+script = ExtResource( 8 )
+ClimatePartGUIScene = SubResource( 2 )
+
+[node name="ActualElevation" type="TextureRect" parent="AltitudeGUI" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 51.0
+margin_top = 10.0
+margin_right = 691.0
+margin_bottom = 650.0
+rect_scale = Vector2( 0.1, 0.1 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 10 )
+stretch_mode = 4
+script = ExtResource( 9 )
+_sections_unfolded = [ "Anchor", "Margin", "Rect" ]
+
+[node name="AcclimatedElevation" type="TextureRect" parent="AltitudeGUI" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 74.0
+margin_bottom = 74.0
+rect_scale = Vector2( 0.1, 0.1 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 11 )
+stretch_mode = 0
+script = ExtResource( 9 )
+_sections_unfolded = [ "Anchor", "Margin", "Rect" ]
+
+[node name="MinElevation" type="TextureRect" parent="AltitudeGUI" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 74.0
+margin_bottom = 74.0
+rect_scale = Vector2( 0.1, 0.1 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 12 )
+stretch_mode = 0
+script = ExtResource( 9 )
+_sections_unfolded = [ "Anchor", "Margin", "Rect" ]
+
+[node name="EffectDeclarations" type="Node" parent="." index="4"]
+
+[node name="Speed_1" type="Node" parent="EffectDeclarations" index="0"]
+
+script = ExtResource( 13 )
+
+[node name="Speed_1_LowVelAVG" type="Node" parent="EffectDeclarations" index="1"]
+
+script = ExtResource( 14 )
+
+[node name="JumpBoost_1" type="Node" parent="EffectDeclarations" index="2"]
+
+script = ExtResource( 15 )
+
+[node name="Normal" type="Node" parent="EffectDeclarations" index="3"]
+
+script = ExtResource( 16 )
+
+[connection signal="enable_state_changed" from="." to="PauseMenu/PauseMenuRoot" method="_on_Player_enable_state_changed"]
+
+

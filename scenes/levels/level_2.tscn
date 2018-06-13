@@ -1,0 +1,101 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://instantiable/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://instantiable/Grid.tscn" type="PackedScene" id=2]
+[ext_resource path="res://instantiable/platform.tscn" type="PackedScene" id=3]
+[ext_resource path="res://instantiable/DeathTrigger.tscn" type="PackedScene" id=4]
+[ext_resource path="res://instantiable/WinTrigger.tscn" type="PackedScene" id=5]
+[ext_resource path="res://instantiable/WhiteEnv.tscn" type="PackedScene" id=6]
+
+
+
+[node name="level_2" type="Node"]
+
+[node name="Player" parent="." index="0" instance=ExtResource( 1 )]
+
+current_level_id = "level_2"
+climates = [ "15=Normal", "4=Speed_1", "5=JumpBoost_1" ]
+
+[node name="Grid" parent="." index="1" instance=ExtResource( 2 )]
+
+[node name="Platforms" type="Node" parent="." index="2"]
+
+[node name="platform" parent="Platforms" index="0" instance=ExtResource( 3 )]
+
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0 )
+
+[node name="platform8" parent="Platforms" index="1" instance=ExtResource( 3 )]
+
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -30.2551, 0, 0 )
+
+[node name="platform3" parent="Platforms" index="2" instance=ExtResource( 3 )]
+
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -13.3145, -0.104256, 0 )
+
+[node name="platform4" parent="Platforms" index="3" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1336, 1.30602, 6.70835 )
+
+[node name="platform5" parent="Platforms" index="4" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1336, 2.76715, 9.77492 )
+
+[node name="platform6" parent="Platforms" index="5" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1.20704, 0, 0, 0, 1.6874, -10.9799, 4.02415, 9.77492 )
+
+[node name="platform7" parent="Platforms" index="6" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.1275, 4.98549, 9.77492 )
+
+[node name="platform9" parent="Platforms" index="7" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.1275, 5.81831, 18.0024 )
+
+[node name="platform15" parent="Platforms" index="8" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2612, 4.32202, 18.0024 )
+
+[node name="platform14" parent="Platforms" index="9" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.7376, 7.21641, 21.8032 )
+
+[node name="platform10" parent="Platforms" index="10" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21.642, 7.73974, 17.9069 )
+
+[node name="platform11" parent="Platforms" index="11" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29.4687, 8.68052, 17.9069 )
+
+[node name="platform16" parent="Platforms" index="12" instance=ExtResource( 3 )]
+
+transform = Transform( 3.58589, 0, 0, 0, 1, 0, 0, 0, 1.98813, -26.3329, 6.08664, 11.0995 )
+
+[node name="platform17" parent="Platforms" index="13" instance=ExtResource( 3 )]
+
+transform = Transform( 3.58589, 0, 0, 0, 1, 0, 0, 0, 1.98813, -30.8853, 1.12318, -14.3844 )
+
+[node name="platform12" parent="Platforms" index="14" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -35.7072, 9.33694, 17.7246 )
+
+[node name="platform13" parent="Platforms" index="15" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -41.8647, 9.33694, 10.8483 )
+
+[node name="DeathTrigger" parent="Platforms" index="16" instance=ExtResource( 4 )]
+
+transform = Transform( 9.48189, 0, 0, 0, 4.14467, 0, 0, 0, 1, -26.1104, 8.44085, 15.2159 )
+
+[node name="DeathTrigger2" parent="Platforms" index="17" instance=ExtResource( 4 )]
+
+transform = Transform( 7.66311, 0, 0, 0, 2.0054, 0, 0, 0, 1, -30.441, 1.60693, -7.50273 )
+
+[node name="WinTrigger" parent="Platforms" index="18" instance=ExtResource( 5 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30.9507, 3.53216, -14.1116 )
+
+[node name="WhiteEnv" parent="." index="3" instance=ExtResource( 6 )]
+
+
