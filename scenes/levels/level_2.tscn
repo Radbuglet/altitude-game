@@ -7,9 +7,7 @@
 [ext_resource path="res://instantiable/WinTrigger.tscn" type="PackedScene" id=5]
 [ext_resource path="res://instantiable/WhiteEnv.tscn" type="PackedScene" id=6]
 
-
-
-[node name="level_2" type="Node"]
+[node name="level_2" type="Node" index="0"]
 
 [node name="Player" parent="." index="0" instance=ExtResource( 1 )]
 
@@ -80,19 +78,15 @@ transform = Transform( 3.58589, 0, 0, 0, 1, 0, 0, 0, 1.98813, -30.8853, 1.12318,
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -35.7072, 9.33694, 17.7246 )
 
-[node name="platform13" parent="Platforms" index="15" instance=ExtResource( 3 )]
-
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -41.8647, 9.33694, 10.8483 )
-
-[node name="DeathTrigger" parent="Platforms" index="16" instance=ExtResource( 4 )]
+[node name="DeathTrigger" parent="Platforms" index="15" instance=ExtResource( 4 )]
 
 transform = Transform( 9.48189, 0, 0, 0, 4.14467, 0, 0, 0, 1, -26.1104, 8.44085, 15.2159 )
 
-[node name="DeathTrigger2" parent="Platforms" index="17" instance=ExtResource( 4 )]
+[node name="DeathTrigger2" parent="Platforms" index="16" instance=ExtResource( 4 )]
 
 transform = Transform( 7.66311, 0, 0, 0, 2.0054, 0, 0, 0, 1, -30.441, 1.60693, -7.50273 )
 
-[node name="WinTrigger" parent="Platforms" index="18" instance=ExtResource( 5 )]
+[node name="WinTrigger" parent="Platforms" index="17" instance=ExtResource( 5 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30.9507, 3.53216, -14.1116 )
 
