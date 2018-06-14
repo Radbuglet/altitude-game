@@ -3,7 +3,7 @@
 [ext_resource path="res://scripts/ProgressManager.gd" type="Script" id=1]
 [ext_resource path="res://scripts/Level.gd" type="Script" id=2]
 
-[node name="ProgressManager" type="Node" index="0"]
+[node name="ProgressManager" type="Node"]
 
 script = ExtResource( 1 )
 
@@ -26,5 +26,11 @@ scene = "res://scenes/levels/level_2.tscn"
 script = ExtResource( 2 )
 lvl_name = "Level 3"
 scene = "res://scenes/levels/level_3.tscn"
+
+[node name="level_4" type="Node" parent="levels" index="3"]
+
+script = ExtResource( 2 )
+lvl_name = "Level 4"
+scene = "res://scenes/levels/level_4.tscn"
 
 
