@@ -184,6 +184,7 @@ func _process(delta):
 					var next_level_index = current_level.get_index() + 1
 					
 					if next_level_index >= len(active_profile.get_levels_list()):
+						Input.set_mouse_mode(0)
 						get_tree().change_scene_to(win_scene)
 						print("THIS WAS THE LAST LEVEL!")
 					else:
