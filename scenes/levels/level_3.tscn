@@ -8,7 +8,7 @@
 [ext_resource path="res://instantiable/AcclimationTrigger.tscn" type="PackedScene" id=6]
 [ext_resource path="res://instantiable/WhiteEnv.tscn" type="PackedScene" id=7]
 
-[node name="level_3" type="Node"]
+[node name="level_3" type="Node" index="0"]
 
 [node name="Player" parent="." index="0" instance=ExtResource( 1 )]
 
@@ -29,11 +29,11 @@ transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 1.45732, 0, 1.3428, 8.63101 )
 
 [node name="platform3" parent="Platforms" index="2" instance=ExtResource( 3 )]
 
-transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 1.45732, 0, 2.65952, 14.2931 )
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 1.45732, 0, 2.35749, 14.2931 )
 
 [node name="platform8" parent="Platforms" index="3" instance=ExtResource( 3 )]
 
-transform = Transform( 5, 0, 0, 0, 0.593689, 0, 0, 0, 1.45732, 0, 6.65879, 14.2931 )
+transform = Transform( 5, 0, 0, 0, 0.341795, 0, 0, 0, 1.45732, 0, 7.06212, 14.2931 )
 
 [node name="platform9" parent="Platforms" index="4" instance=ExtResource( 3 )]
 
@@ -41,7 +41,7 @@ transform = Transform( 5, 0, 0, 0, 0.593689, 0, 0, 0, 1.45732, 0, 7.92572, 10.01
 
 [node name="platform5" parent="Platforms" index="5" instance=ExtResource( 3 )]
 
-transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 1.45732, 0, 3.68754, 17.5959 )
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 1.45732, 0, 3.62488, 17.5959 )
 
 [node name="platform4" parent="Platforms" index="6" instance=ExtResource( 3 )]
 
