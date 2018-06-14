@@ -220,7 +220,7 @@ func _process(delta):
 			) * 0.25
 		) / 1.25
 		
-		var abs_change_to_ace = min(0.05, abs(get_elevation() - acclimated_elevation))
+		var abs_change_to_ace = min(0.0325, abs(get_elevation() - acclimated_elevation))
 		acclimated_elevation += abs_change_to_ace * sign(get_elevation() - acclimated_elevation)
 		
 		# Change climate
