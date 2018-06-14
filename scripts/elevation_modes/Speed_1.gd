@@ -4,7 +4,7 @@ func onEnabled(player):
 	pass
 
 func onUpdate(player, dt):
-	player.current_speed = 7
+	player.current_speed = 8
 
 func onDisabled(player):
 	player.current_speed = 4
