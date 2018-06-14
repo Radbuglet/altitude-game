@@ -35,7 +35,7 @@ _bundled = {
 "version": 2
 }
 
-[node name="Player" type="KinematicBody" index="0"]
+[node name="Player" type="KinematicBody"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
 input_ray_pickable = true
@@ -62,7 +62,7 @@ climates = null
 
 [node name="Camera" type="Camera" parent="." index="0"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.444057, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.544057, 0 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null
@@ -80,9 +80,10 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="1"]
 
-transform = Transform( 0.25, 0, 0, 0, 0.5, 0, 0, 0, 0.25, 0, 0, 0 )
+transform = Transform( 0.5, 0, 0, 0, 0.9, 0, 0, 0, 0.5, 0, 0, 0 )
 shape = SubResource( 1 )
 disabled = false
+_sections_unfolded = [ "Transform" ]
 
 [node name="MeshInstance" type="MeshInstance" parent="CollisionShape" index="0"]
 
